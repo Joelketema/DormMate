@@ -53,12 +53,12 @@ const data = [{
     },
     
 ]
-const Home = () => {
+const Home = ({navigation}) => {
 
     return (
         <ScrollView>
             <Box>
-                <Chat data={data} />
+                <Chat data={data} navigation={navigation} />
             </Box>
         </ScrollView>
     )

@@ -11,10 +11,12 @@ import { useFonts } from 'expo-font';
 import WelcomeScreen from './screens/WelcomeScreen';
 import Login from './screens/Login';
 import Home from './screens/Home';
+import CurrentChat from "./screens/CurrentChat"
 
 //headers
 
 import HomeHeader from './components/HomeHeader';
+import ChatHeader from './components/ChatHeader';
 //route
 const Stack = createNativeStackNavigator();
 
@@ -70,7 +72,11 @@ export default function App() {
             options={{
               headerTitle: (props) => <HomeHeader /> 
         }}  />
-        {/* <Stack.Screen name="Details" component={DetailsScreen} /> */}
+          <Stack.Screen name="opened" component={CurrentChat}
+                options={{
+                  headerTitle: (props) => <ChatHeader /> 
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>

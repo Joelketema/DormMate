@@ -1,14 +1,30 @@
 
-import { Box, Text, Image, Badge } from "native-base"
+import { Box, Text, Image, Badge,Button } from "native-base"
+import { TouchableWithoutFeedback,TouchableOpacity } from "react-native"
 import Ionicons from "react-native-vector-icons/Ionicons"
-const Chat = ({data}) => {
+import { useState } from "react"
+const Chat = ({data,navigation}) => {
 
+    const [pressed, setPressed] = useState(false)
+    
     return (
-    <>
+     <>
             {
                 data.map((d) => {
                     return (
-                        <Box p={3} mt={2} rounded={"lg"} shadow={5} bg={"white"} display={"flex"} flexDirection={"row"} w={{
+                        <TouchableOpacity 
+                            style={{
+                                padding: 2,
+                                borderRadius: 5,
+    
+        
+                            }}
+                            onPress={() => {
+                                setPressed(true)
+                                navigation.navigate("opened")
+                            }}
+                    >
+                            <Box p={4} mt={0}    display={"flex"} flexDirection={"row"} w={{
                             base:"100%"}} justifyContent={"space-between"} alignItems={"center"}>
                             <Box>
                                 <Image src={d.image}
@@ -46,11 +62,13 @@ const Chat = ({data}) => {
                                 </Box>
                             </Box>
                 
-                        </Box >                   
+                            </Box >     
+                    </TouchableOpacity>    
                 )
             })
         
-            }
+                }
+
     </>
     )
     
